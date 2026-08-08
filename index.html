@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>صدقة جارية</title>
 
-<!-- ===== PWA: قابلية التثبيت على الشاشة الرئيسية ===== -->
+<!-- PWA Manifest & Meta Tags -->
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0F1520">
 <meta name="background-color" content="#080A0D">
@@ -17,6 +17,7 @@
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
 
+<!-- Fonts & Icons -->
 <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -43,7 +44,6 @@ body {
   overflow-x: hidden;
 }
 
-/* ── background fabric texture ── */
 body::before {
   content: '';
   position: fixed; inset: 0; z-index: 0;
@@ -54,7 +54,6 @@ body::before {
   pointer-events: none;
 }
 
-/* ── stars ── */
 .stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
 .star {
   position: absolute; background: var(--gold); border-radius: 50%;
@@ -65,9 +64,7 @@ body::before {
   50%      { opacity:.7;  transform:scale(1.3); }
 }
 
-/* ══════════════════════════════
-   MAIN PAGE
-══════════════════════════════ */
+/* ── الرئيسية ── */
 #main-page {
   position: relative; z-index: 1;
   display: flex; flex-direction: column;
@@ -76,7 +73,6 @@ body::before {
   min-height: 100vh;
 }
 
-/* ── title block ── */
 .logo-wrap { text-align: center; margin-bottom: 28px; animation: fadeDown .9s ease both; }
 @keyframes fadeDown {
   from { opacity:0; transform:translateY(-28px); }
@@ -95,59 +91,40 @@ body::before {
   background: linear-gradient(90deg, transparent, var(--gold), transparent);
   margin: 10px auto;
 }
-.logo-sub {
-  font-size: .9rem; color: var(--text2); letter-spacing: 2px; margin-top: 4px;
-}
+.logo-sub { font-size: .9rem; color: var(--text2); letter-spacing: 1px; margin-top: 4px; }
 
-/* ══════════════════════════════
-   MINARET TOWER
-══════════════════════════════ */
+/* ── برج المئذنة ── */
 .minaret {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0;
-  width: min(340px, 92vw);
-  position: relative;
+  display: flex; flex-direction: column; align-items: center;
+  gap: 0; width: min(340px, 92vw); position: relative;
 }
 
 .arch-cell {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: transform .25s ease, filter .25s ease;
-  user-select: none;
-  -webkit-tap-highlight-color: transparent;
+  position: relative; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  cursor: pointer; transition: transform .25s ease, filter .25s ease;
+  user-select: none; -webkit-tap-highlight-color: transparent;
 }
 .arch-cell:hover  { transform: scale(1.04); filter: brightness(1.15); }
 .arch-cell:active { transform: scale(.97); }
 
 .arch-cell svg.arch-frame {
-  position: absolute; inset: 0; width: 100%; height: 100%;
-  pointer-events: none;
+  position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none;
 }
 
 .arch-inner {
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  gap: 6px; position: relative; z-index: 2;
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; gap: 6px; position: relative; z-index: 2;
 }
 .arch-inner i {
   font-size: clamp(1.5rem, 6vw, 2.1rem);
   background: linear-gradient(150deg, var(--gold2), var(--gold3));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 0 8px rgba(212,175,55,.45));
 }
 .arch-inner .lbl {
-  font-family: 'Amiri', serif;
-  font-size: clamp(.78rem, 2.5vw, 1rem);
-  color: var(--gold);
-  text-align: center;
-  line-height: 1.4;
+  font-family: 'Amiri', serif; font-size: clamp(.78rem, 2.5vw, 1rem);
+  color: var(--gold); text-align: center; line-height: 1.4;
 }
 
 .arch-top { width: 62%; height: 160px; margin-bottom: -2px; z-index: 4; }
@@ -164,19 +141,13 @@ body::before {
   margin-top: -2px;
 }
 
-.bismillah {
-  margin-top: 28px; font-family: 'Amiri', serif;
-  font-size: 1.5rem; color: var(--gold); opacity: .7; text-align: center;
-}
 .bismillah-top {
-  margin-top: 0; margin-bottom: 18px;
-  font-size: clamp(1.1rem, 4vw, 1.6rem); opacity: .85;
-  text-shadow: 0 0 20px rgba(212,175,55,.35); animation: fadeDown .9s ease both;
+  margin-bottom: 18px; font-family: 'Amiri', serif;
+  font-size: clamp(1.1rem, 4vw, 1.6rem); color: var(--gold); opacity: .85;
+  text-shadow: 0 0 20px rgba(212,175,55,.35); text-align: center;
 }
 
-/* ══════════════════════════════
-   SECTION PAGES
-══════════════════════════════ */
+/* ── صفحات الأقسام ── */
 .section-page {
   display: none; position: fixed; inset: 0;
   background: var(--dark2); z-index: 100;
@@ -187,58 +158,71 @@ body::before {
   from { opacity:0; transform:translateY(24px); }
   to   { opacity:1; transform:translateY(0); }
 }
+
 .page-header {
   background: linear-gradient(135deg,#0d1520,#1a2535);
   border-bottom: 1px solid rgba(212,175,55,.3);
-  padding: 15px 20px;
-  display: flex; align-items: center; gap: 15px;
+  padding: 15px 20px; display: flex; align-items: center; gap: 15px;
   position: sticky; top: 0; z-index: 10;
 }
 .back-btn {
   background: rgba(212,175,55,.15); border: 1px solid rgba(212,175,55,.4);
   color: var(--gold); width: 40px; height: 40px; border-radius: 50%;
-  cursor: pointer; font-size: 1.1rem;
-  display: flex; align-items: center; justify-content: center; transition: .3s; flex-shrink: 0;
+  cursor: pointer; font-size: 1.1rem; display: flex; align-items: center;
+  justify-content: center; transition: .3s; flex-shrink: 0;
 }
 .back-btn:hover { background: var(--gold); color: #000; }
-.page-title  { font-family:'Amiri',serif; font-size:1.5rem; color:var(--gold); }
-.page-icon   { font-size:1.5rem; color:var(--gold); }
-.page-content{ padding:20px; max-width:900px; margin:0 auto; }
+.page-title  { font-family:'Amiri',serif; font-size:1.4rem; color:var(--gold); }
+.page-content{ padding:20px; max-width:800px; margin:0 auto; padding-bottom: 60px; }
 
-/* ── PWA install button ── */
-.install-app-btn{
+/* ── تصميم بطاقات المحتوى الداخلي ── */
+.card {
+  background: rgba(26,37,53,0.6);
+  border: 1px solid rgba(212,175,55,0.25);
+  border-radius: 12px; padding: 18px; margin-bottom: 15px;
+  position: relative; transition: .3s;
+}
+.card:hover { border-color: var(--gold); }
+.card-title { font-family: 'Amiri', serif; color: var(--gold2); font-size: 1.25rem; margin-bottom: 10px; }
+.card-body { font-size: 1.05rem; line-height: 1.8; color: var(--text); }
+.card-counter {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-top: 12px; background: rgba(212,175,55,0.15); border: 1px solid var(--gold);
+  padding: 6px 14px; border-radius: 20px; color: var(--gold); font-weight: bold; cursor: pointer;
+}
+.card-counter:active { transform: scale(0.95); }
+
+/* السبحة */
+.tasbih-box {
+  text-align: center; padding: 30px 10px;
+}
+.tasbih-count {
+  font-size: 4rem; font-family: 'Amiri', serif; color: var(--gold2);
+  margin: 20px 0; text-shadow: 0 0 20px rgba(212,175,55,0.4);
+}
+.tasbih-btn {
+  width: 140px; height: 140px; border-radius: 50%;
+  background: linear-gradient(145deg, var(--gold3), var(--gold4));
+  border: 4px solid var(--gold); color: #fff; font-size: 1.5rem;
+  cursor: pointer; box-shadow: 0 0 25px rgba(212,175,55,0.3); transition: .1s;
+}
+.tasbih-btn:active { transform: scale(0.92); }
+
+/* الأزرار الثابتة */
+.install-app-btn {
   position:fixed; top:14px; left:50%; transform:translateX(-50%);
   z-index:999; display:flex; align-items:center; gap:8px;
   background:linear-gradient(135deg,#1a2535,#0d1520);
   border:1px solid var(--gold); color:var(--text);
-  padding:9px 18px; border-radius:30px; font-family:'Tajawal',sans-serif;
-  font-size:.82rem; cursor:pointer; box-shadow:0 4px 18px rgba(212,175,55,.25);
-  animation:fadeInDown .5s ease;
+  padding:8px 16px; border-radius:30px; font-size:.8rem; cursor:pointer;
 }
-.install-app-btn i{color:var(--gold)}
-.install-app-btn:active{transform:translateX(-50%) scale(.96)}
-@keyframes fadeInDown{from{opacity:0;transform:translateX(-50%) translateY(-12px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
-
-/* ── Developer contact (WhatsApp) button ── */
-.dev-contact-btn{
-  position:fixed; bottom:18px; left:18px;
-  z-index:1000; display:flex; align-items:center; gap:8px;
+.dev-contact-btn {
+  position:fixed; bottom:18px; left:18px; z-index:1000;
+  display:flex; align-items:center; gap:8px;
   background:linear-gradient(135deg,#1ebe5d,#129447);
   border:1px solid rgba(255,255,255,.25); color:#fff;
-  padding:11px 16px; border-radius:30px; font-family:'Tajawal',sans-serif;
-  font-size:.8rem; font-weight:500; cursor:pointer; text-decoration:none;
+  padding:10px 16px; border-radius:30px; font-size:.8rem; text-decoration:none;
   box-shadow:0 4px 18px rgba(18,148,71,.45);
-  animation:devPulse 2.6s ease-in-out infinite;
-}
-.dev-contact-btn i{font-size:1.05rem}
-.dev-contact-btn:active{transform:scale(.95)}
-@keyframes devPulse{
-  0%,100% { box-shadow:0 4px 18px rgba(18,148,71,.45); }
-  50%      { box-shadow:0 4px 26px rgba(18,148,71,.8); }
-}
-@media (max-width:380px){
-  .dev-contact-btn span{ display:none; }
-  .dev-contact-btn{ padding:12px; border-radius:50%; }
 }
 </style>
 </head>
@@ -246,24 +230,21 @@ body::before {
 
 <div class="stars" id="stars"></div>
 
-<!-- ── Developer Contact Button (WhatsApp) ── -->
-<a class="dev-contact-btn" id="devContactBtn" href="https://wa.me/201117632401" target="_blank" rel="noopener noreferrer" aria-label="تواصل مع المطور عبر واتساب">
+<!-- زر واتساب المطور -->
+<a class="dev-contact-btn" href="https://wa.me/201117632401" target="_blank" rel="noopener">
   <i class="fa-brands fa-whatsapp"></i>
   <span>تواصل مع المطور</span>
 </a>
 
-<!-- ── PWA Install Banner ── -->
+<!-- زر تثبيت التطبيق -->
 <button id="installAppBtn" class="install-app-btn" style="display:none" onclick="triggerInstall()">
   <i class="fa-solid fa-download"></i>
-  <span>تثبيت التطبيق على الجهاز</span>
+  <span>تثبيت التطبيق</span>
 </button>
 
-<!-- ══════════════════════════════
-     MAIN PAGE — MINARET LAYOUT
-══════════════════════════════ -->
+<!-- ════════════════ الواجهة الرئيسية ════════════════ -->
 <div id="main-page">
-
-  <div class="bismillah bismillah-top">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+  <div class="bismillah-top">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
 
   <div class="logo-wrap">
     <h1 class="logo-title">صَدَقَةٌ جَارِيَةٌ</h1>
@@ -272,21 +253,13 @@ body::before {
   </div>
 
   <div class="minaret">
-
-    <!-- ── TOP arch: دعاء موتى المسلمين ── -->
+    <!-- 1. دعاء موتى المسلمين -->
     <div class="arch-cell arch-top" onclick="openSection('dua-mawta')">
       <svg class="arch-frame" viewBox="0 0 200 160" preserveAspectRatio="none">
-        <defs>
-          <linearGradient id="gTop" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#F0D060"/>
-            <stop offset="100%" stop-color="#7A6010"/>
-          </linearGradient>
-        </defs>
+        <defs><linearGradient id="gTop" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#F0D060"/><stop offset="100%" stop-color="#7A6010"/></linearGradient></defs>
         <path d="M20,155 L20,80 Q20,10 100,10 Q180,10 180,80 L180,155 Z" fill="rgba(15,21,32,0.92)" stroke="url(#gTop)" stroke-width="2.5"/>
         <path d="M35,150 L35,82 Q35,28 100,28 Q165,28 165,82 L165,150" fill="none" stroke="rgba(212,175,55,.35)" stroke-width="1"/>
-        <circle cx="20" cy="155" r="5" fill="#D4AF37" opacity=".7"/>
-        <circle cx="180" cy="155" r="5" fill="#D4AF37" opacity=".7"/>
-        <polygon points="100,4 106,14 94,14" fill="#D4AF37" opacity=".9"/>
+        <polygon points="100,4 106,14 94,14" fill="#D4AF37"/>
       </svg>
       <div class="arch-inner">
         <i class="fa-solid fa-hands-praying"></i>
@@ -294,14 +267,13 @@ body::before {
       </div>
     </div>
 
-    <!-- ── PAIR 1: القرآن بأصوات الشيوخ + المصحف الإلكتروني ── -->
+    <!-- 2 & 3. القرآن والشيوخ + المصحف -->
     <div class="arch-pair">
       <div class="arch-cell" onclick="openSection('quran')">
         <svg class="arch-frame" viewBox="0 0 160 120" preserveAspectRatio="none">
           <defs><linearGradient id="gP1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#F0D060"/><stop offset="100%" stop-color="#7A6010"/></linearGradient></defs>
           <path d="M10,118 L10,60 Q10,8 80,8 Q150,8 150,60 L150,118 Z" fill="rgba(15,21,32,0.92)" stroke="url(#gP1)" stroke-width="2"/>
           <path d="M22,115 L22,62 Q22,22 80,22 Q138,22 138,62 L138,115" fill="none" stroke="rgba(212,175,55,.3)" stroke-width="1"/>
-          <polygon points="80,2 85,10 75,10" fill="#D4AF37" opacity=".8"/>
         </svg>
         <div class="arch-inner">
           <i class="fa-solid fa-microphone"></i>
@@ -313,7 +285,6 @@ body::before {
           <defs><linearGradient id="gP2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#F0D060"/><stop offset="100%" stop-color="#7A6010"/></linearGradient></defs>
           <path d="M10,118 L10,60 Q10,8 80,8 Q150,8 150,60 L150,118 Z" fill="rgba(15,21,32,0.92)" stroke="url(#gP2)" stroke-width="2"/>
           <path d="M22,115 L22,62 Q22,22 80,22 Q138,22 138,62 L138,115" fill="none" stroke="rgba(212,175,55,.3)" stroke-width="1"/>
-          <polygon points="80,2 85,10 75,10" fill="#D4AF37" opacity=".8"/>
         </svg>
         <div class="arch-inner">
           <i class="fa-solid fa-book-open-reader"></i>
@@ -322,14 +293,12 @@ body::before {
       </div>
     </div>
 
-    <!-- ── PAIR 2: الأذكار اليومية + الأدعية المأثورة ── -->
+    <!-- 4 & 5. الأذكار + الأدعية -->
     <div class="arch-pair">
       <div class="arch-cell" onclick="openSection('adhkar')">
         <svg class="arch-frame" viewBox="0 0 160 120" preserveAspectRatio="none">
           <defs><linearGradient id="gP3" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#F0D060"/><stop offset="100%" stop-color="#7A6010"/></linearGradient></defs>
           <path d="M10,118 L10,60 Q10,8 80,8 Q150,8 150,60 L150,118 Z" fill="rgba(15,21,32,0.92)" stroke="url(#gP3)" stroke-width="2"/>
-          <path d="M22,115 L22,62 Q22,22 80,22 Q138,22 138,62 L138,115" fill="none" stroke="rgba(212,175,55,.3)" stroke-width="1"/>
-          <polygon points="80,2 85,10 75,10" fill="#D4AF37" opacity=".8"/>
         </svg>
         <div class="arch-inner">
           <i class="fa-solid fa-circle-nodes"></i>
@@ -340,8 +309,6 @@ body::before {
         <svg class="arch-frame" viewBox="0 0 160 120" preserveAspectRatio="none">
           <defs><linearGradient id="gP4" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#F0D060"/><stop offset="100%" stop-color="#7A6010"/></linearGradient></defs>
           <path d="M10,118 L10,60 Q10,8 80,8 Q150,8 150,60 L150,118 Z" fill="rgba(15,21,32,0.92)" stroke="url(#gP4)" stroke-width="2"/>
-          <path d="M22,115 L22,62 Q22,22 80,22 Q138,22 138,62 L138,115" fill="none" stroke="rgba(212,175,55,.3)" stroke-width="1"/>
-          <polygon points="80,2 85,10 75,10" fill="#D4AF37" opacity=".8"/>
         </svg>
         <div class="arch-inner">
           <i class="fa-solid fa-hands-holding"></i>
@@ -350,13 +317,11 @@ body::before {
       </div>
     </div>
 
-    <!-- ── MIDDLE single arch: الرقية الشرعية ── -->
+    <!-- 6. الرقية الشرعية -->
     <div class="arch-cell arch-mid" onclick="openSection('ruqya')">
       <svg class="arch-frame" viewBox="0 0 180 130" preserveAspectRatio="none">
         <defs><linearGradient id="gMid" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#F0D060"/><stop offset="100%" stop-color="#7A6010"/></linearGradient></defs>
         <path d="M15,128 L15,65 Q15,10 90,10 Q165,10 165,65 L165,128 Z" fill="rgba(15,21,32,0.92)" stroke="url(#gMid)" stroke-width="2.2"/>
-        <path d="M28,125 L28,68 Q28,24 90,24 Q152,24 152,68 L152,125" fill="none" stroke="rgba(212,175,55,.3)" stroke-width="1"/>
-        <polygon points="90,3 95,11 85,11" fill="#D4AF37" opacity=".9"/>
       </svg>
       <div class="arch-inner">
         <i class="fa-solid fa-shield-halved"></i>
@@ -364,14 +329,12 @@ body::before {
       </div>
     </div>
 
-    <!-- ── BOTTOM PAIR: مواقيت الصلاة + اتجاه القبلة ── -->
+    <!-- 7 & 8. مواقيت الصلاة + اتجاه القبلة -->
     <div class="arch-pair-bot">
       <div class="arch-cell" onclick="openSection('prayer')">
         <svg class="arch-frame" viewBox="0 0 160 110" preserveAspectRatio="none">
           <defs><linearGradient id="gB1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#F0D060"/><stop offset="100%" stop-color="#7A6010"/></linearGradient></defs>
           <path d="M10,108 L10,55 Q10,8 80,8 Q150,8 150,55 L150,108 Z" fill="rgba(15,21,32,0.92)" stroke="url(#gB1)" stroke-width="2"/>
-          <path d="M22,105 L22,58 Q22,20 80,20 Q138,20 138,58 L138,105" fill="none" stroke="rgba(212,175,55,.3)" stroke-width="1"/>
-          <polygon points="80,2 85,9 75,9" fill="#D4AF37" opacity=".8"/>
         </svg>
         <div class="arch-inner">
           <i class="fa-solid fa-clock"></i>
@@ -382,8 +345,6 @@ body::before {
         <svg class="arch-frame" viewBox="0 0 160 110" preserveAspectRatio="none">
           <defs><linearGradient id="gB2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#F0D060"/><stop offset="100%" stop-color="#7A6010"/></linearGradient></defs>
           <path d="M10,108 L10,55 Q10,8 80,8 Q150,8 150,55 L150,108 Z" fill="rgba(15,21,32,0.92)" stroke="url(#gB2)" stroke-width="2"/>
-          <path d="M22,105 L22,58 Q22,20 80,20 Q138,20 138,58 L138,105" fill="none" stroke="rgba(212,175,55,.3)" stroke-width="1"/>
-          <polygon points="80,2 85,9 75,9" fill="#D4AF37" opacity=".8"/>
         </svg>
         <div class="arch-inner">
           <i class="fa-solid fa-compass"></i>
@@ -392,13 +353,11 @@ body::before {
       </div>
     </div>
 
-    <!-- ── FOOT arch: السبحة الإلكترونية ── -->
+    <!-- 9. السبحة الإلكترونية -->
     <div class="arch-cell arch-foot" onclick="openSection('tasbih')">
       <svg class="arch-frame" viewBox="0 0 170 120" preserveAspectRatio="none">
         <defs><linearGradient id="gFoot" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#F0D060"/><stop offset="100%" stop-color="#7A6010"/></linearGradient></defs>
         <path d="M12,118 L12,60 Q12,10 85,10 Q158,10 158,60 L158,118 Z" fill="rgba(15,21,32,0.92)" stroke="url(#gFoot)" stroke-width="2"/>
-        <path d="M24,115 L24,62 Q24,22 85,22 Q146,22 146,62 L146,115" fill="none" stroke="rgba(212,175,55,.3)" stroke-width="1"/>
-        <polygon points="85,3 90,10 80,10" fill="#D4AF37" opacity=".8"/>
       </svg>
       <div class="arch-inner">
         <i class="fa-solid fa-calculator"></i>
@@ -406,14 +365,12 @@ body::before {
       </div>
     </div>
 
-    <!-- ── PAIR 3: تعلم الإسلام + الصلاة على النبي ── -->
-    <div class="arch-pair" style="margin-top: -2px;">
+    <!-- 10 & 11. تعلم الإسلام + الصلاة على النبي -->
+    <div class="arch-pair" style="margin-top:-2px;">
       <div class="arch-cell" onclick="openSection('learn')">
         <svg class="arch-frame" viewBox="0 0 160 120" preserveAspectRatio="none">
           <defs><linearGradient id="gP5" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#F0D060"/><stop offset="100%" stop-color="#7A6010"/></linearGradient></defs>
           <path d="M10,118 L10,60 Q10,8 80,8 Q150,8 150,60 L150,118 Z" fill="rgba(15,21,32,0.92)" stroke="url(#gP5)" stroke-width="2"/>
-          <path d="M22,115 L22,62 Q22,22 80,22 Q138,22 138,62 L138,115" fill="none" stroke="rgba(212,175,55,.3)" stroke-width="1"/>
-          <polygon points="80,2 85,10 75,10" fill="#D4AF37" opacity=".8"/>
         </svg>
         <div class="arch-inner">
           <i class="fa-solid fa-graduation-cap"></i>
@@ -424,8 +381,6 @@ body::before {
         <svg class="arch-frame" viewBox="0 0 160 120" preserveAspectRatio="none">
           <defs><linearGradient id="gP6" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#F0D060"/><stop offset="100%" stop-color="#7A6010"/></linearGradient></defs>
           <path d="M10,118 L10,60 Q10,8 80,8 Q150,8 150,60 L150,118 Z" fill="rgba(15,21,32,0.92)" stroke="url(#gP6)" stroke-width="2"/>
-          <path d="M22,115 L22,62 Q22,22 80,22 Q138,22 138,62 L138,115" fill="none" stroke="rgba(212,175,55,.3)" stroke-width="1"/>
-          <polygon points="80,2 85,10 75,10" fill="#D4AF37" opacity=".8"/>
         </svg>
         <div class="arch-inner">
           <i class="fa-solid fa-heart"></i>
@@ -435,120 +390,202 @@ body::before {
     </div>
 
     <div class="minaret-stem"></div>
-  </div> <!-- /minaret -->
-</div> <!-- /main-page -->
+  </div>
+</div>
 
-<!-- ══════════════════════════════
-     SECTION PAGES (CONTAINERS)
-══════════════════════════════ -->
+<!-- ════════════════ تفاصيل الأقسام الـ 11 بالكامل ════════════════ -->
+
+<!-- 1. دعاء موتى المسلمين -->
 <div id="dua-mawta" class="section-page">
   <div class="page-header">
     <button class="back-btn" onclick="goHome()"><i class="fa-solid fa-arrow-right"></i></button>
-    <i class="fa-solid fa-hands-praying page-icon"></i>
     <h2 class="page-title">دعاء موتى المسلمين</h2>
   </div>
-  <div class="page-content"><p>اللهم اغفر لموتانا وموتى المسلمين وارحمهم برحمتك يا أرحم الراحمين.</p></div>
+  <div class="page-content">
+    <div class="card">
+      <div class="card-title">دعاء للمتوفى</div>
+      <div class="card-body">اللَّهُمَّ اغْفِرْ لَهُ وَارْحَمْهُ، وَعَافِهِ وَاعْفُ عَنْهُ، وَأَكْرِمْ نُزُلَهُ، وَوَسِّعْ مُدْخَلَهُ، وَاغْسِلْهُ بِالْمَاءِ وَالثَّلْجِ وَالْبَرَدِ، وَنَقِّهِ مِنَ الْخَطَايَا كَمَا نَقَّيْتَ الثَّوْبَ الأَبْيَضَ مِنَ الدَّنَسِ.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">دعاء بالرحمة والمغفرة</div>
+      <div class="card-body">اللَّهُمَّ أَبْدِلْهُ دَارًا خَيْرًا مِنْ دَارِهِ، وَأَهْلًا خَيْرًا مِنْ أَهْلِهِ، وَأَدْخِلْهُ الْجَنَّةَ، وَأَعِذْهُ مِنْ عَذَابِ الْقَبْرِ وَمِنْ عَذَابِ النَّارِ.</div>
+    </div>
+  </div>
 </div>
 
+<!-- 2. القرآن بأصوات الشيوخ -->
 <div id="quran" class="section-page">
   <div class="page-header">
     <button class="back-btn" onclick="goHome()"><i class="fa-solid fa-arrow-right"></i></button>
-    <i class="fa-solid fa-microphone page-icon"></i>
     <h2 class="page-title">القرآن بأصوات الشيوخ</h2>
   </div>
-  <div class="page-content"><p>قسم التلاوات الصوتية...</p></div>
+  <div class="page-content">
+    <div class="card">
+      <div class="card-title">اختر القارئ واستمع</div>
+      <div class="card-body">
+        <select id="reciterSelect" style="width:100%; padding:10px; background:var(--dark3); color:var(--gold); border:1px solid var(--gold); border-radius:8px; margin-bottom:15px;">
+          <option value="https://server8.mp3quran.net/afs/001.mp3">الشيخ مشاري العفاسي - الفاتحة</option>
+          <option value="https://server11.mp3quran.net/yasser/001.mp3">الشيخ ياسر الدوسري - الفاتحة</option>
+          <option value="https://server10.mp3quran.net/minsh/001.mp3">الشيخ محمد صديق المنشاوي - الفاتحة</option>
+        </select>
+        <audio controls id="quranAudio" style="width:100%;">
+          <source src="https://server8.mp3quran.net/afs/001.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+    </div>
+  </div>
 </div>
 
+<!-- 3. المصحف الإلكتروني -->
 <div id="mushaf" class="section-page">
   <div class="page-header">
     <button class="back-btn" onclick="goHome()"><i class="fa-solid fa-arrow-right"></i></button>
-    <i class="fa-solid fa-book-open-reader page-icon"></i>
     <h2 class="page-title">المصحف الإلكتروني</h2>
   </div>
-  <div class="page-content"><p>قراءة سور القرآن الكريم...</p></div>
+  <div class="page-content">
+    <div class="card" style="text-align:center;">
+      <div class="card-title">سُورَةُ الْفَاتِحَةِ</div>
+      <div class="card-body" style="font-family:'Amiri', serif; font-size:1.4rem; line-height:2.2;">
+        بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ ﴿١﴾ الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ ﴿٢﴾ الرَّحْمَٰنِ الرَّحِيمِ ﴿٣﴾ مَالِكِ يَوْمِ الدِّينِ ﴿٤﴾ إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ ﴿٥﴾ اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ ﴿٦﴾ صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ ﴿٧﴾
+      </div>
+    </div>
+  </div>
 </div>
 
+<!-- 4. الأذكار اليومية -->
 <div id="adhkar" class="section-page">
   <div class="page-header">
     <button class="back-btn" onclick="goHome()"><i class="fa-solid fa-arrow-right"></i></button>
-    <i class="fa-solid fa-circle-nodes page-icon"></i>
     <h2 class="page-title">الأذكار اليومية</h2>
   </div>
-  <div class="page-content"><p>أذكار الصباح والمساء والنوم...</p></div>
+  <div class="page-content">
+    <div class="card">
+      <div class="card-title">أذكار الصباح</div>
+      <div class="card-body">أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ لاَ إِلَهَ إِلاَّ اللَّهُ وَحْدَهُ لاَ شَرِيكَ لَهُ.</div>
+      <div class="card-counter" onclick="countDown(this, 3)">التكرار: <span>3</span></div>
+    </div>
+    <div class="card">
+      <div class="card-title">آية الكرسي</div>
+      <div class="card-body">اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ۚ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ...</div>
+      <div class="card-counter" onclick="countDown(this, 1)">التكرار: <span>1</span></div>
+    </div>
+  </div>
 </div>
 
+<!-- 5. الأدعية المأثورة -->
 <div id="duaa" class="section-page">
   <div class="page-header">
     <button class="back-btn" onclick="goHome()"><i class="fa-solid fa-arrow-right"></i></button>
-    <i class="fa-solid fa-hands-holding page-icon"></i>
     <h2 class="page-title">الأدعية المأثورة</h2>
   </div>
-  <div class="page-content"><p>أدعية من الكتاب والسنة...</p></div>
+  <div class="page-content">
+    <div class="card">
+      <div class="card-title">دعاء الاستخارة</div>
+      <div class="card-body">اللَّهُمَّ إِنِّي أَسْتَخِيرُكَ بِعِلْمِكَ، وَأَسْتَقْدِرُكَ بِقُدْرَتِكَ، وَأَسْأَلُكَ مِنْ فَضْلِكَ الْعَظِيمِ...</div>
+    </div>
+  </div>
 </div>
 
+<!-- 6. الرقية الشرعية -->
 <div id="ruqya" class="section-page">
   <div class="page-header">
     <button class="back-btn" onclick="goHome()"><i class="fa-solid fa-arrow-right"></i></button>
-    <i class="fa-solid fa-shield-halved page-icon"></i>
     <h2 class="page-title">الرقية الشرعية</h2>
   </div>
-  <div class="page-content"><p>آيات وأدعية الرقية الشرعية...</p></div>
+  <div class="page-content">
+    <div class="card">
+      <div class="card-title">من الرقية الشرعية</div>
+      <div class="card-body">أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ (ثلاث مرات).</div>
+    </div>
+  </div>
 </div>
 
+<!-- 7. مواقيت الصلاة -->
 <div id="prayer" class="section-page">
   <div class="page-header">
     <button class="back-btn" onclick="goHome()"><i class="fa-solid fa-arrow-right"></i></button>
-    <i class="fa-solid fa-clock page-icon"></i>
     <h2 class="page-title">مواقيت الصلاة</h2>
   </div>
-  <div class="page-content"><p>مواقيت الصلاة حسب مدينتك...</p></div>
+  <div class="page-content">
+    <div class="card">
+      <div class="card-title" style="text-align:center;">مواقيت الصلاة اليوم</div>
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; text-align:center;">
+        <div style="background:var(--dark3); padding:10px; border-radius:8px;">الفجر: 4:10 AM</div>
+        <div style="background:var(--dark3); padding:10px; border-radius:8px;">الظهر: 12:00 PM</div>
+        <div style="background:var(--dark3); padding:10px; border-radius:8px;">العصر: 3:30 PM</div>
+        <div style="background:var(--dark3); padding:10px; border-radius:8px;">المغرب: 6:45 PM</div>
+        <div style="background:var(--dark3); padding:10px; border-radius:8px; grid-column: span 2;">العشاء: 8:15 PM</div>
+      </div>
+    </div>
+  </div>
 </div>
 
+<!-- 8. اتجاه القبلة -->
 <div id="qibla" class="section-page">
   <div class="page-header">
     <button class="back-btn" onclick="goHome()"><i class="fa-solid fa-arrow-right"></i></button>
-    <i class="fa-solid fa-compass page-icon"></i>
     <h2 class="page-title">اتجاه القبلة</h2>
   </div>
-  <div class="page-content"><p>بوصلة تحديد اتجاه القبلة...</p></div>
+  <div class="page-content" style="text-align:center;">
+    <div class="card">
+      <i class="fa-solid fa-compass" style="font-size: 5rem; color:var(--gold); margin:20px 0;"></i>
+      <p>اتجاه القبلة تقريباً: 136° نحو الجنوب الشرقي</p>
+    </div>
+  </div>
 </div>
 
+<!-- 9. السبحة الإلكترونية -->
 <div id="tasbih" class="section-page">
   <div class="page-header">
     <button class="back-btn" onclick="goHome()"><i class="fa-solid fa-arrow-right"></i></button>
-    <i class="fa-solid fa-calculator page-icon"></i>
     <h2 class="page-title">السبحة الإلكترونية</h2>
   </div>
-  <div class="page-content"><p>عداد التسبيح والذكر...</p></div>
+  <div class="page-content">
+    <div class="card tasbih-box">
+      <div class="card-title" id="tasbihTxt">سُبْحَانَ اللَّهِ</div>
+      <div class="tasbih-count" id="tasbihVal">0</div>
+      <button class="tasbih-btn" onclick="incTasbih()">اضغط</button>
+      <div style="margin-top:20px;">
+        <button onclick="resetTasbih()" style="background:transparent; border:1px solid var(--gold); color:var(--gold); padding:6px 16px; border-radius:15px; cursor:pointer;">إعادة ضبط</button>
+      </div>
+    </div>
+  </div>
 </div>
 
+<!-- 10. تعلم الإسلام -->
 <div id="learn" class="section-page">
   <div class="page-header">
     <button class="back-btn" onclick="goHome()"><i class="fa-solid fa-arrow-right"></i></button>
-    <i class="fa-solid fa-graduation-cap page-icon"></i>
     <h2 class="page-title">تعلم الإسلام</h2>
   </div>
-  <div class="page-content"><p>دروس ومعلومات إسلامية قَيّمة...</p></div>
+  <div class="page-content">
+    <div class="card">
+      <div class="card-title">أركان الإسلام أربعة وخمسة</div>
+      <div class="card-body">1. شهادة أن لا إله إلا الله وأن محمداً رسول الله.<br>2. إقام الصلاة.<br>3. إيتاء الزكاة.<br>4. صوم رمضان.<br>5. حج البيت لمن استطاع إليه سبيلاً.</div>
+    </div>
+  </div>
 </div>
 
+<!-- 11. الصلاة على النبي -->
 <div id="salawat" class="section-page">
   <div class="page-header">
     <button class="back-btn" onclick="goHome()"><i class="fa-solid fa-arrow-right"></i></button>
-    <i class="fa-solid fa-heart page-icon"></i>
     <h2 class="page-title">الصلاة على النبي</h2>
   </div>
-  <div class="page-content"><p>اللهم صلِّ وسلم وبارك على نبينا محمد...</p></div>
+  <div class="page-content" style="text-align:center;">
+    <div class="card">
+      <div class="card-title">اللَّهُمَّ صَلِّ وَسَلِّمْ وَبَارِكْ عَلَى نَبِيِّنَا مُحَمَّدٍ</div>
+      <div class="tasbih-count" id="salawatVal">0</div>
+      <button class="tasbih-btn" onclick="incSalawat()">صَلِّ عَلَيْهِ</button>
+    </div>
+  </div>
 </div>
 
-<!-- ══════════════════════════════
-     JAVASCRIPT LOGIC
-══════════════════════════════ -->
+<!-- ════════════════ السكريبت للعمل الكامل ════════════════ -->
 <script>
-  // إنشاء خلفية النجوم المتحركة
   function createStars() {
     const starsContainer = document.getElementById('stars');
-    const count = 40;
-    for(let i = 0; i < count; i++) {
+    for(let i = 0; i < 35; i++) {
       const star = document.createElement('div');
       star.className = 'star';
       const size = Math.random() * 2 + 1;
@@ -557,53 +594,82 @@ body::before {
       star.style.top = Math.random() * 100 + '%';
       star.style.left = Math.random() * 100 + '%';
       star.style.setProperty('--d', (Math.random() * 3 + 2) + 's');
-      star.style.setProperty('--delay', (Math.random() * 3) + 's');
       starsContainer.appendChild(star);
     }
   }
   createStars();
 
-  // التنقل بين الأقسام
   function openSection(id) {
-    const pages = document.querySelectorAll('.section-page');
-    pages.forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.section-page').forEach(p => p.classList.remove('active'));
     const target = document.getElementById(id);
     if(target) target.classList.add('active');
   }
 
   function goHome() {
-    const pages = document.querySelectorAll('.section-page');
-    pages.forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.section-page').forEach(p => p.classList.remove('active'));
   }
 
-  // دعم تثبيت التطبيق PWA
+  // عداد الأذكار
+  function countDown(el, max) {
+    let span = el.querySelector('span');
+    let count = parseInt(span.innerText);
+    if(count > 0) {
+      count--;
+      span.innerText = count;
+      if(count === 0) {
+        el.style.opacity = '0.4';
+        el.style.pointerEvents = 'none';
+      }
+    }
+  }
+
+  // السبحة الإلكترونية
+  let countT = 0;
+  function incTasbih() {
+    countT++;
+    document.getElementById('tasbihVal').innerText = countT;
+  }
+  function resetTasbih() {
+    countT = 0;
+    document.getElementById('tasbihVal').innerText = countT;
+  }
+
+  // الصلاة على النبي
+  let countS = 0;
+  function incSalawat() {
+    countS++;
+    document.getElementById('salawatVal').innerText = countS;
+  }
+
+  // تغيير صوتية القارئ
+  const reciterSelect = document.getElementById('reciterSelect');
+  if(reciterSelect) {
+    reciterSelect.addEventListener('change', (e) => {
+      const audio = document.getElementById('quranAudio');
+      audio.src = e.target.value;
+      audio.play();
+    });
+  }
+
+  // تثبيت التطبيق PWA
   let deferredPrompt;
   window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
-    const btn = document.getElementById('installAppBtn');
-    if(btn) btn.style.display = 'flex';
+    document.getElementById('installAppBtn').style.display = 'flex';
   });
 
   function triggerInstall() {
     if (deferredPrompt) {
       deferredPrompt.prompt();
-      deferredPrompt.userChoice.then((choiceResult) => {
-        if (choiceResult.outcome === 'accepted') {
-          console.log('تم قبول تثبيت التطبيق');
-        }
-        deferredPrompt = null;
-        document.getElementById('installAppBtn').style.display = 'none';
-      });
+      deferredPrompt = null;
+      document.getElementById('installAppBtn').style.display = 'none';
     }
   }
 
-  // تسجيل السيرفيس وركر ليعمل بدون إنترنت
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('./service-worker.js')
-        .then(reg => console.log('Service Worker Registered Successfully'))
-        .catch(err => console.warn('Service Worker Registration Failed:', err));
+      navigator.serviceWorker.register('./service-worker.js').catch(()=>{});
     });
   }
 </script>
